@@ -63,6 +63,7 @@
   gap: 0 20px;
   padding: 0 3rem;
   /* border: 1px solid; */
+  cursor: pointer;
 
   &:hover {
     background: rgb(232, 232, 232);
@@ -73,7 +74,7 @@
 .img_circle {
   width: 3em;
   height: 3em;
-  background-color: green;
+  /* background-color: green; */
   border-radius: 50%;
   display: flex;
   justify-content: center;

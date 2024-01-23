@@ -25,7 +25,7 @@
 .img_circle {
   width: 3em;
   height: 3em;
-  background-color: green;
+  /* background-color: green; */
   border-radius: 50%;
   display: flex;
   justify-content: center;

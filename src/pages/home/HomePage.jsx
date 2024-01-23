@@ -3,6 +3,7 @@ import styles from "./homepage.module.css";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 import { Landing } from "../../components/landing/Landing";
 import { SingleGroup } from "../../components/singleGroup/SingleGroup";
+import { useSelector } from "react-redux";
 
 export default function HomePage() {
   const [active, setActive] = useState(false);
@@ -19,7 +20,10 @@ export default function HomePage() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  });
+  }, []);
+
+  const a = useSelector((note) => note.note);
+  console.log(a);
 
   return (
     <div className={styles.container}>
