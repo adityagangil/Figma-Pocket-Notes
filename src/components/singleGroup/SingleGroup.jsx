@@ -1,5 +1,6 @@
 import styles from "./singleGroup.module.css";
 import sendIcon from "../../assets/icons/send-icon.svg";
+import { SingleNote } from "../singleNote/SingleNote";
 
 export const SingleGroup = () => {
   return (
@@ -12,7 +13,13 @@ export const SingleGroup = () => {
         <h4>My Notes</h4>
       </div>
 
-      <div>Notes</div>
+      <div className={styles.allNotes}>
+        {Array(5)
+          .fill(null)
+          .map((note, _) => (
+            <SingleNote key={_} />
+          ))}
+      </div>
 
       <div className={styles.message_container}>
         <textarea
