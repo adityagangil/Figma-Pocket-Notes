@@ -43,6 +43,7 @@
 @media only screen and (max-width: 720px) {
   .allNotes {
     gap: 1.5rem 0;
+    padding: 1rem;
   }
   .groupName {
     padding: 0 1.5rem;
