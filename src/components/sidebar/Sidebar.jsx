@@ -1,11 +1,12 @@
 import styles from "./sidebar.module.css";
-import { useDisclosure } from "@mantine/hooks";
 import { CreateGroupModal } from "../createGroupModal/CreateGroupModal";
 import { useSelector, useDispatch } from "react-redux";
 import { changeCurrentActiveGroup } from "../../redux/noteSlice";
+import { useState } from "react";
 
 export const Sidebar = ({ active, setActive }) => {
-  const [opened, { open, close }] = useDisclosure(false);
+  const [openModal, setOpenModal] = useState(false);
+
   const dispatch = useDispatch();
 
   const { currentActiveGroup, groups } = useSelector((note) => note.note);
@@ -46,11 +47,11 @@ export const Sidebar = ({ active, setActive }) => {
         ))}
       </div>
 
-      <div onClick={open} className={styles.create_group}>
+      <div onClick={() => setOpenModal(true)} className={styles.create_group}>
         +
       </div>
 
-      <CreateGroupModal opened={opened} open={open} close={close} />
+      <CreateGroupModal openModal={openModal} setOpenModal={setOpenModal} />
     </div>
   );
 };

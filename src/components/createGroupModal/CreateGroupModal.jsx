@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "./createGroupModal.module.css";
 import { Modal } from "@mantine/core";
+import { useDispatch } from "react-redux";
+import { createGroup } from "../../redux/noteSlice";
 
-export const CreateGroupModal = ({ opened, open, close }) => {
+export const CreateGroupModal = ({ openModal, setOpenModal }) => {
   const colors = [
     "#B38BFA",
     "#FF79F2",
@@ -11,6 +13,8 @@ export const CreateGroupModal = ({ opened, open, close }) => {
     "#0047FF",
     "#6691FF",
   ];
+
+  const dispatch = useDispatch();
 
   const [grpTitle, setGrpTitle] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -22,14 +26,20 @@ export const CreateGroupModal = ({ opened, open, close }) => {
 
     if (!selectedColor) {
       setError("Please select a color!");
+      return;
     }
 
-    console.log(selectedColor);
-    console.log(grpTitle);
+    dispatch(createGroup({ groupName: grpTitle, groupColor: selectedColor }));
+    setOpenModal(false);
   };
 
   return (
-    <Modal opened={opened} onClose={close} title="Create New Group" centered>
+    <Modal
+      opened={openModal}
+      onClose={() => setOpenModal(false)}
+      title="Create New Group"
+      centered
+    >
       <form className={styles.modal} onSubmit={handleCreateGroup}>
         <div className={styles.modal_input}>
           <label htmlFor="grpName">Group Name</label>

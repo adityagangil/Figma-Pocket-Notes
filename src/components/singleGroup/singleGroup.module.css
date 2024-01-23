@@ -44,6 +44,9 @@
   .allNotes {
     gap: 1.5rem 0;
   }
+  .groupName {
+    padding: 0 1.5rem;
+  }
 }
 
 .allNotes::-webkit-scrollbar {

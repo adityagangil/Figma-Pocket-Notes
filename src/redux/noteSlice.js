@@ -51,10 +51,27 @@ export const noteSlice = createSlice({
     changeCurrentActiveGroup: (state, action) => {
       state.currentActiveGroup = action.payload;
     },
-    createNote: (state, action) => {},
+
+    createGroup: (state, action) => {
+      const { groupName, groupColor } = action.payload;
+
+      const shortName = groupName
+        .split(" ")
+        .reduce((response, word) => response + word.slice(0, 1), "")
+        .toUpperCase();
+
+      const newGroup = state.groups;
+      newGroup.push({
+        id: new Date(),
+        groupName,
+        groupShortName: shortName,
+        groupColor,
+        notes: [],
+      });
+    },
   },
 });
 
-export const { createNote, changeCurrentActiveGroup } = noteSlice.actions;
+export const { changeCurrentActiveGroup, createGroup } = noteSlice.actions;
 
 export default noteSlice.reducer;
