@@ -98,10 +98,22 @@ export const noteSlice = createSlice({
         1
       );
     },
+    editNote: (state, action) => {
+      const { noteId, groupId, content } = action.payload;
+
+      const group = state.groups.find((g) => g.id === groupId);
+      const note = group.notes.find((note) => note.id === noteId);
+      note.content = content;
+    },
   },
 });
 
-export const { changeCurrentActiveGroup, createGroup, createNote, deleteNote } =
-  noteSlice.actions;
+export const {
+  changeCurrentActiveGroup,
+  createGroup,
+  createNote,
+  deleteNote,
+  editNote,
+} = noteSlice.actions;
 
 export default noteSlice.reducer;
