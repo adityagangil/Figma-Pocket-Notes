@@ -98,12 +98,24 @@ export const noteSlice = createSlice({
         1
       );
     },
+
     editNote: (state, action) => {
       const { noteId, groupId, content } = action.payload;
 
       const group = state.groups.find((g) => g.id === groupId);
       const note = group.notes.find((note) => note.id === noteId);
       note.content = content;
+    },
+
+    deleteGroup: (state, action) => {
+      const { groupId } = action.payload;
+
+      state.groups.splice(
+        state.groups.findIndex((grp) => grp.id === groupId),
+        1
+      );
+
+      state.currentActiveGroup = null;
     },
   },
 });
@@ -114,6 +126,7 @@ export const {
   createNote,
   deleteNote,
   editNote,
+  deleteGroup,
 } = noteSlice.actions;
 
 export default noteSlice.reducer;

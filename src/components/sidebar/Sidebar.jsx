@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeCurrentActiveGroup } from "../../redux/noteSlice";
 import { useState } from "react";
 
-export const Sidebar = ({ active, setActive }) => {
+export const Sidebar = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const dispatch = useDispatch();

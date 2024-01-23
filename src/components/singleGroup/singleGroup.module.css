@@ -9,11 +9,21 @@
 .groupName {
   display: flex;
   align-items: center;
-  gap: 0 20px;
   padding: 0 3rem;
   background-color: var(--head-blue);
   color: white;
+  justify-content: space-between;
   height: 10%;
+}
+
+.groupContent {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+}
+
+.deleteIcon {
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 720px) {
