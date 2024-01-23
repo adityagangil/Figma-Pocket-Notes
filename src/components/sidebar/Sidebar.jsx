@@ -1,6 +1,10 @@
 import styles from "./sidebar.module.css";
+import { useDisclosure } from "@mantine/hooks";
+import { CreateGroupModal } from "../createGroupModal/CreateGroupModal";
 
 export const Sidebar = () => {
+  const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
@@ -23,153 +27,13 @@ export const Sidebar = () => {
 
           <h4>My Notes</h4>
         </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
-
-        <div className={styles.single_group}>
-          <div className={styles.img_circle}>
-            <p>MN</p>
-          </div>
-
-          <h4>My Notes</h4>
-        </div>
       </div>
 
-      <div className={styles.create_group}>+</div>
+      <div onClick={open} className={styles.create_group}>
+        +
+      </div>
+
+      <CreateGroupModal opened={opened} open={open} close={close} />
     </div>
   );
 };
