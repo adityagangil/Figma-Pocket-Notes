@@ -19,7 +19,8 @@ export const SingleGroup = () => {
 
   const [content, setContent] = useState("");
 
-  const handleCreateNote = () => {
+  const handleCreateNote = (e) => {
+    e.preventDefault();
     if (!content) {
       return;
     }
@@ -87,13 +88,19 @@ export const SingleGroup = () => {
         ))}
       </div>
 
-      <form className={styles.message_container}>
+      <form className={styles.message_container} onSubmit={handleCreateNote}>
         <textarea
           className={styles.message}
           rows="6"
           placeholder="Enter your text here..."
           onChange={(e) => setContent(e.target.value)}
           value={content}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              handleCreateNote(e);
+            }
+          }}
         />
 
         {content ? (
@@ -102,6 +109,7 @@ export const SingleGroup = () => {
             src={sendColorIcon}
             alt="Send"
             className={styles.sendIcon}
+            title="Send"
           />
         ) : (
           <img src={sendIcon} alt="Send" className={styles.sendIcon} />

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./createGroupModal.module.css";
 import { Modal } from "@mantine/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createGroup } from "../../redux/noteSlice";
 
 export const CreateGroupModal = ({ openModal, setOpenModal }) => {
@@ -20,12 +20,19 @@ export const CreateGroupModal = ({ openModal, setOpenModal }) => {
   const [selectedColor, setSelectedColor] = useState("");
   const [error, setError] = useState("");
 
+  const { groups } = useSelector((note) => note.note);
+
   const handleCreateGroup = (e) => {
     setError("");
     e.preventDefault();
 
     if (!selectedColor) {
       setError("Please select a color!");
+      return;
+    }
+    const grpNames = groups.reduce((acc, curr) => [...acc, curr.groupName], "");
+    if (grpNames.includes(grpTitle)) {
+      setError("This title already exists!");
       return;
     }
 
