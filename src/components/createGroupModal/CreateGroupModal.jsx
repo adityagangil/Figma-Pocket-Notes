@@ -37,9 +37,12 @@ export const CreateGroupModal = ({ openModal, setOpenModal }) => {
     <Modal
       opened={openModal}
       onClose={() => setOpenModal(false)}
-      title="Create New Group"
+      closeOnClickOutside
+      withCloseButton={false}
+      // title="Create New Group"
       centered
     >
+      <p className={styles.createNewGroup}>Create New Group</p>
       <form className={styles.modal} onSubmit={handleCreateGroup}>
         <div className={styles.modal_input}>
           <label htmlFor="grpName">Group Name</label>
@@ -49,6 +52,8 @@ export const CreateGroupModal = ({ openModal, setOpenModal }) => {
             placeholder="Enter Group Name"
             required
             name="grpName"
+            autoComplete="off"
+            autoFocus
             onChange={(e) => setGrpTitle(e.target.value)}
           />
         </div>

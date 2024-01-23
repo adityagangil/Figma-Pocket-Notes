@@ -58,7 +58,8 @@ export const noteSlice = createSlice({
       const shortName = groupName
         .split(" ")
         .reduce((response, word) => response + word.slice(0, 1), "")
-        .toUpperCase();
+        .toUpperCase()
+        .slice(0, 2);
 
       const newGroup = state.groups;
       newGroup.push({
