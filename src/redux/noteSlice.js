@@ -62,13 +62,15 @@ export const noteSlice = createSlice({
         .slice(0, 2);
 
       const newGroup = state.groups;
-      newGroup.push({
+      newGroup.unshift({
         id: Date.now(),
         groupName: groupName.trim(),
         groupShortName: shortName,
         groupColor,
         notes: [],
       });
+
+      state.currentActiveGroup = newGroup[0].id;
     },
 
     createNote: (state, action) => {
@@ -77,7 +79,7 @@ export const noteSlice = createSlice({
       const time = date.toLocaleTimeString();
 
       const group = state.groups.find((g) => g.id === groupId);
-      group?.notes.push({
+      group?.notes.unshift({
         id: Date.now(),
         content,
         date: date.toDateString().slice(4),
