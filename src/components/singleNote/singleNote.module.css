@@ -7,10 +7,12 @@
   flex-direction: column;
   gap: 1rem 0;
   padding: 1rem;
+  position: relative;
 }
 
 .actual_note {
   font-size: 1em;
+  word-break: break-all;
 }
 
 .date_time_area {
@@ -18,4 +20,8 @@
   display: flex;
   gap: 0 1rem;
   justify-content: flex-end;
+}
+
+.deleteIcon {
+  cursor: pointer;
 }
