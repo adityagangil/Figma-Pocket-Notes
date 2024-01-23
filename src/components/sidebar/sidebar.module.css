@@ -37,10 +37,10 @@
   gap: 10px 0;
   /* border: 1px solid; */
   overflow-y: hidden;
-  padding: 0 3rem;
+  /* padding: 0 3rem; */
 
   &:hover {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 .group_container::-webkit-scrollbar {
@@ -61,6 +61,13 @@
   display: flex;
   align-items: center;
   gap: 0 20px;
+  padding: 0 3rem;
+  /* border: 1px solid; */
+
+  &:hover {
+    background: rgb(232, 232, 232);
+    transition: all 0.2s;
+  }
 }
 
 .img_circle {
