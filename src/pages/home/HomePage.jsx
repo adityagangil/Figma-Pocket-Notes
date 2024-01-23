@@ -22,8 +22,7 @@ export default function HomePage() {
     };
   }, []);
 
-  const a = useSelector((note) => note.note);
-  console.log(a);
+  const { currentActiveGroup } = useSelector((note) => note.note);
 
   return (
     <div className={styles.container}>
@@ -34,12 +33,12 @@ export default function HomePage() {
         <Sidebar active={active} setActive={setActive} />
       </div>
 
-      {!active ? (
+      {!currentActiveGroup & !active ? (
         <div className={styles.right_container}>
           <Landing />
         </div>
       ) : (
-        (active || windowWith > 719) && (
+        (currentActiveGroup || active || windowWith > 719) && (
           <div
             className={styles.right_container}
             style={{ display: active && "block" }}

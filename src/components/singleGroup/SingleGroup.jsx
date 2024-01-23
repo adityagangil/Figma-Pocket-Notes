@@ -2,17 +2,25 @@ import styles from "./singleGroup.module.css";
 import sendIcon from "../../assets/icons/send-icon.svg";
 import backIcon from "../../assets/icons/back-arrow.svg";
 import { SingleNote } from "../singleNote/SingleNote";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeCurrentActiveGroup } from "../../redux/noteSlice";
 
 export const SingleGroup = ({ active, setActive }) => {
   const { currentActiveGroup, groups } = useSelector((note) => note.note);
+  const dispatch = useDispatch();
 
   const newGrp = groups.filter((grp) => grp.id === currentActiveGroup);
 
   return (
     <div className={styles.container}>
       <div className={styles.groupName}>
-        <div className={styles.backArrow} onClick={() => setActive(false)}>
+        <div
+          className={styles.backArrow}
+          onClick={() => {
+            setActive(false);
+            dispatch(changeCurrentActiveGroup(null));
+          }}
+        >
           <img src={backIcon} alt="" />
         </div>
         <div
@@ -26,11 +34,7 @@ export const SingleGroup = ({ active, setActive }) => {
       </div>
 
       <div className={styles.allNotes}>
-        {/* {Array(5)
-          .fill(null)
-          .map((note, _) => (
-            <SingleNote key={_} />
-          ))} */}
+        {newGrp[0].notes?.length === 0 && <p>No Notes to display!</p>}
 
         {newGrp[0].notes?.map((note) => (
           <SingleNote key={note.id} note={note} groupId={newGrp[0].id} />

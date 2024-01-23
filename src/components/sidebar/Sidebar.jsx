@@ -17,6 +17,10 @@ export const Sidebar = ({ active, setActive }) => {
       </div>
 
       <div className={styles.group_container}>
+        {groups?.length === 0 && (
+          <p style={{ textAlign: "center" }}>Please create a group.</p>
+        )}
+
         {groups?.map((group) => (
           <div
             key={group.id}
