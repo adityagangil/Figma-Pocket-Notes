@@ -31,7 +31,7 @@ export const Sidebar = ({ active, setActive }) => {
                 currentActiveGroup === group.id && "rgb(232, 232, 232)",
             }}
             onClick={() => {
-              setActive(true);
+              // setActive(true);
               dispatch(changeCurrentActiveGroup(group.id));
             }}
           >

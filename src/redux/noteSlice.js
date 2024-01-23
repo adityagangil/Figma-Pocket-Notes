@@ -64,7 +64,7 @@ export const noteSlice = createSlice({
       const newGroup = state.groups;
       newGroup.push({
         id: Date.now(),
-        groupName,
+        groupName: groupName.trim(),
         groupShortName: shortName,
         groupColor,
         notes: [],

@@ -30,7 +30,7 @@ export const SingleGroup = ({ active, setActive }) => {
         <div
           className={styles.backArrow}
           onClick={() => {
-            setActive(false);
+            // setActive(false);
             dispatch(changeCurrentActiveGroup(null));
           }}
         >

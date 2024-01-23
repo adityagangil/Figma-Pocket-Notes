@@ -6,7 +6,6 @@ import { SingleGroup } from "../../components/singleGroup/SingleGroup";
 import { useSelector } from "react-redux";
 
 export default function HomePage() {
-  const [active, setActive] = useState(false);
   const [windowWith, setWindowWith] = useState("");
 
   useEffect(() => {
@@ -24,26 +23,25 @@ export default function HomePage() {
 
   const { currentActiveGroup } = useSelector((note) => note.note);
 
+  const isCurrGrpNull = currentActiveGroup === null;
+
   return (
     <div className={styles.container}>
       <div
         className={styles.left_container}
-        style={{ display: active && windowWith < 720 && "none" }}
+        style={{ display: isCurrGrpNull || (windowWith < 720 && "none") }}
       >
-        <Sidebar active={active} setActive={setActive} />
+        <Sidebar />
       </div>
 
-      {!currentActiveGroup & !active ? (
+      {!currentActiveGroup ? (
         <div className={styles.right_container}>
           <Landing />
         </div>
       ) : (
-        (currentActiveGroup || active || windowWith > 719) && (
-          <div
-            className={styles.right_container}
-            style={{ display: active && "block" }}
-          >
-            <SingleGroup active={active} setActive={setActive} />
+        (currentActiveGroup || windowWith > 719) && (
+          <div className={styles.right_container} style={{ display: "block" }}>
+            <SingleGroup />
           </div>
         )
       )}
