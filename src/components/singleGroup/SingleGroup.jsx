@@ -1,11 +1,15 @@
 import styles from "./singleGroup.module.css";
 import sendIcon from "../../assets/icons/send-icon.svg";
+import backIcon from "../../assets/icons/back-arrow.svg";
 import { SingleNote } from "../singleNote/SingleNote";
 
-export const SingleGroup = () => {
+export const SingleGroup = ({ active, setActive }) => {
   return (
     <div className={styles.container}>
       <div className={styles.groupName}>
+        <div className={styles.backArrow} onClick={() => setActive(false)}>
+          <img src={backIcon} alt="" />
+        </div>
         <div className={styles.img_circle}>
           <p>MN</p>
         </div>

@@ -80,3 +80,18 @@
   align-items: center;
   color: white;
 }
+
+@media only screen and (max-width: 720px) {
+  .group_container {
+    overflow-y: scroll;
+  }
+  .group_container::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 950px) and (min-width: 720px) {
+  .single_group {
+    padding: 0 1rem;
+  }
+}

@@ -2,7 +2,7 @@ import styles from "./sidebar.module.css";
 import { useDisclosure } from "@mantine/hooks";
 import { CreateGroupModal } from "../createGroupModal/CreateGroupModal";
 
-export const Sidebar = () => {
+export const Sidebar = ({ active, setActive }) => {
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
@@ -12,7 +12,7 @@ export const Sidebar = () => {
       </div>
 
       <div className={styles.group_container}>
-        <div className={styles.single_group}>
+        <div className={styles.single_group} onClick={() => setActive(true)}>
           <div className={styles.img_circle}>
             <p>MN</p>
           </div>

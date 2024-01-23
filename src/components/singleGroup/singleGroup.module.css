@@ -16,6 +16,12 @@
   height: 10%;
 }
 
+@media only screen and (min-width: 720px) {
+  .backArrow {
+    display: none;
+  }
+}
+
 .img_circle {
   width: 3em;
   height: 3em;
@@ -33,6 +39,11 @@
   flex-direction: column;
   gap: 1rem 0;
   height: 65%;
+}
+@media only screen and (max-width: 720px) {
+  .allNotes {
+    gap: 1.5rem 0;
+  }
 }
 
 .allNotes::-webkit-scrollbar {
