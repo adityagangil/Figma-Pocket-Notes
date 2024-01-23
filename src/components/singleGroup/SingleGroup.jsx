@@ -1,15 +1,28 @@
 import styles from "./singleGroup.module.css";
 import sendIcon from "../../assets/icons/send-icon.svg";
+import sendColorIcon from "../../assets/icons/send-colorful-icon.svg";
 import backIcon from "../../assets/icons/back-arrow.svg";
 import { SingleNote } from "../singleNote/SingleNote";
 import { useSelector, useDispatch } from "react-redux";
-import { changeCurrentActiveGroup } from "../../redux/noteSlice";
+import { changeCurrentActiveGroup, createNote } from "../../redux/noteSlice";
+import { useState } from "react";
 
 export const SingleGroup = ({ active, setActive }) => {
   const { currentActiveGroup, groups } = useSelector((note) => note.note);
   const dispatch = useDispatch();
 
   const newGrp = groups.filter((grp) => grp.id === currentActiveGroup);
+
+  const [content, setContent] = useState("");
+
+  const handleCreateNote = () => {
+    if (!content) {
+      return;
+    }
+
+    dispatch(createNote({ content, groupId: newGrp[0].id }));
+    setContent("");
+  };
 
   return (
     <div className={styles.container}>
@@ -41,15 +54,26 @@ export const SingleGroup = ({ active, setActive }) => {
         ))}
       </div>
 
-      <div className={styles.message_container}>
+      <form className={styles.message_container}>
         <textarea
           className={styles.message}
           rows="6"
           placeholder="Enter your text here..."
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
         />
 
-        <img src={sendIcon} alt="Send" className={styles.sendIcon} />
-      </div>
+        {content ? (
+          <img
+            onClick={handleCreateNote}
+            src={sendColorIcon}
+            alt="Send"
+            className={styles.sendIcon}
+          />
+        ) : (
+          <img src={sendIcon} alt="Send" className={styles.sendIcon} />
+        )}
+      </form>
     </div>
   );
 };

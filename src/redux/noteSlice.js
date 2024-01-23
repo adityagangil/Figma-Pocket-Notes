@@ -63,16 +63,31 @@ export const noteSlice = createSlice({
 
       const newGroup = state.groups;
       newGroup.push({
-        id: new Date(),
+        id: Date.now(),
         groupName,
         groupShortName: shortName,
         groupColor,
         notes: [],
       });
     },
+
+    createNote: (state, action) => {
+      const { content, groupId } = action.payload;
+      const date = new Date();
+      const time = date.toLocaleTimeString();
+
+      const group = state.groups.find((g) => g.id === groupId);
+      group?.notes.push({
+        id: Date.now(),
+        content,
+        date: date.toDateString().slice(4),
+        time: time.slice(0, 5) + time.slice(-3),
+      });
+    },
   },
 });
 
-export const { changeCurrentActiveGroup, createGroup } = noteSlice.actions;
+export const { changeCurrentActiveGroup, createGroup, createNote } =
+  noteSlice.actions;
 
 export default noteSlice.reducer;
